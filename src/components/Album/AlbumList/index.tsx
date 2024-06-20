@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react';
 
+// Components
+import AlbumListItem from "../AlbumListItem";
+
 // Store
 import {getAlbumsList, selectIsLoading, selectList} from "../../../store/album";
 import {useAppDispatch, useAppSelector} from "../../../store";
@@ -18,10 +21,13 @@ const AlbumList = () => {
         return <p>Loading...</p>;
     }
 
-    return <ul>
-        <li>Album 1</li>
-        <li>Album 2</li>
-        <li>Album 3</li>
+    return <ul className="flex flex-wrap">
+        {albumsList.map(album => (
+            <AlbumListItem
+                key={album.id}
+                album={album}
+            />
+        ))}
     </ul>;
 };
 
