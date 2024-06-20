@@ -4,7 +4,7 @@ import {IAlbum} from "../../types";
 import albumService from "../../services/album";
 
 
-export const getAlbums = createAsyncThunk<IAlbum[]>(albumActionTypes.GET_ALBUMS, async () => {
+export const getAlbumsList = createAsyncThunk<IAlbum[]>(albumActionTypes.GET_ALBUMS, async () => {
     try {
         const response = await albumService.getAlbums<IAlbum[]>();
 

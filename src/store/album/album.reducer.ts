@@ -1,28 +1,28 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {getAlbums} from "./album.action";
+import {getAlbumsList} from "./album.action";
 import {IAlbumState} from "./types";
 
 const initialState: IAlbumState = {
     list: [],
     entry: null,
-    loading: false,
+    isLoading: false,
     error: null
 }
 
 const albumReducer = createReducer(initialState, builder => {
     builder
-        // Get albums
-        .addCase(getAlbums.fulfilled, (state, action) => {
-            state.loading = false;
+        // getAlbumsList
+        .addCase(getAlbumsList.fulfilled, (state, action) => {
+            state.isLoading = false;
             state.error = null;
             state.list = action.payload;
         })
-        .addCase(getAlbums.pending, state => {
-            state.loading = true;
+        .addCase(getAlbumsList.pending, state => {
+            state.isLoading = true;
             state.error = null;
         })
-        .addCase(getAlbums.rejected, (state, action) => {
-            state.loading = false;
+        .addCase(getAlbumsList.rejected, (state, action) => {
+            state.isLoading = false;
             state.error = state.error = action.error.message || 'Something went wrong';
         })
 

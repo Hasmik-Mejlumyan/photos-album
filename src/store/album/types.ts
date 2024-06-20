@@ -4,6 +4,6 @@ import {IAlbum} from "../../types";
 export interface IAlbumState {
     list: IAlbum[];
     entry: IAlbum | null;
-    loading: boolean;
+    isLoading: boolean;
     error: string | null;
 }

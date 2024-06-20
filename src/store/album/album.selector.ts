@@ -8,9 +8,14 @@ const albumState = (state: RootState) => state.album;
 export const selectList = createSelector(
     albumState,
     (state) => state.list
-)
+);
 
 export const selectEntry = createSelector(
     albumState,
     (state) => state.entry
-)
+);
+
+export const selectIsLoading = createSelector(
+    albumState,
+    (state) => state.isLoading
+);
