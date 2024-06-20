@@ -11,9 +11,22 @@ const initialState: IAlbumState = {
 
 const albumReducer = createReducer(initialState, builder => {
     builder
-        .addCase(getAlbums, (state, action) => {
-            // state.list = action.payload;
+        // Get albums
+        .addCase(getAlbums.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.list = action.payload;
         })
+        .addCase(getAlbums.pending, state => {
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(getAlbums.rejected, (state, action) => {
+            state.loading = false;
+            state.error = state.error = action.error.message || 'Something went wrong';
+        })
+
+        // Default state
         .addDefaultCase(state => state)
 });
 
