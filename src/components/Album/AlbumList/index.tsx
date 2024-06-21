@@ -21,7 +21,7 @@ const AlbumList = () => {
         return <p>Loading...</p>;
     }
 
-    return <ul className="flex flex-wrap">
+    return <ul className="flex flex-wrap gap-4">
         {albumsList.map(album => (
             <AlbumListItem
                 key={album.id}
